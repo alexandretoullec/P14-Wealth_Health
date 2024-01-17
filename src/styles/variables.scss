@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
 
 $ff-primary: "Bebas Neue", sans-serif;
-$ff-secondary: sans-serif;
+$ff-secondary: "Montserrat", sans-serif;
 
 //font-color
 $fc-primary-green: #386841;
@@ -15,9 +16,22 @@ $black: #020203;
 //font-size
 $fs-title1: 72px;
 $fs-nav: 28px;
+$fs-h2: 24px;
 $fs-title2: 20px;
 $fs-sub: 18px;
 $fs-p: 14px;
 
 //responsive
 $layout-breakpoint-small: 1400px;
+
+//drop down menu
+
+//variables
+
+$bg-color: #242526;
+$bg-accent: #484a4d;
+$text-color: #dadce1;
+$nav-size: 60px;
+$border: 1px solid #474a4d;
+$border-radius: 8px;
+$speed: 500ms;

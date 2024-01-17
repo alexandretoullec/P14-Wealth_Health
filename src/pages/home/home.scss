@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formContent {
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.formSide {
+  display: flex;
+  width: 100%;
+  color: #386841;
+}
+
+.leftSide {
+  width: 50%;
+  padding: 2rem;
+  margin: 2rem 2rem 1rem 2rem;
+}
+
+.rightSIde {
+  width: 50%;
+  position: relative;
+}
+
+.rightContainer {
+  background-color: #f2e8cf;
+  padding: 2rem 2rem 3.5rem 2rem;
+  margin: 2rem;
+}
+
+h2 {
+  position: absolute;
+  top: 18.5rem;
+  left: 70rem;
+  color: $fc-red;
+  letter-spacing: 0.2rem;
+}
+
+.submitButton {
+  cursor: pointer;
+  border: none;
+  background-color: #d9d9d9;
+  height: 3rem;
+  width: 40rem;
+}
