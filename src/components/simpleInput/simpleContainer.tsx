@@ -1,7 +1,6 @@
-import React from "react";
-import "./simpleInput.scss";
+import "./simpleContainer.scss";
 
-const SimpleInput = ({ labelName, type }) => {
+const SimpleContainer = ({ labelName, type }) => {
   return (
     <div className="inputCard">
       <label typeof={type} className="label" htmlFor="">
@@ -12,4 +11,4 @@ const SimpleInput = ({ labelName, type }) => {
   );
 };
 
-export default SimpleInput;
+export default SimpleContainer;

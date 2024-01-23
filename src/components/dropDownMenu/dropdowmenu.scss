@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 :root {
   --primary-bg: #242526;
   --secondary-bg: #fff;
@@ -30,24 +32,40 @@ a {
   text-decoration: none;
 }
 
-.menu-trigger img {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
+.inputCard {
+  position: relative;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+}
+
+.menu-trigger {
+  background-color: $fc-light-green;
+}
+
+.menu-trigger input {
+  width: 18rem;
+  height: 2rem;
+  border: none;
+
+  // position: absolute;
+  // top: 20px;
+  right: 0px;
+  height: 35px;
+  // width: 300px;
+  // border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
-  background-color: #fff;
+  background-color: $fc-light-green;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100px;
+  top: 60px;
   right: 20px;
+
   background-color: #fff;
-  border-radius: var(--border-radius);
+  // border-radius: var(--border-radius);
   padding: 10px 20px;
   width: 200px;
 }
@@ -75,23 +93,6 @@ a {
   visibility: hidden;
   transform: translateY(-20px);
   transition: var(--speed) ease;
-}
-
-h3 {
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-  padding: 20px 0;
-  font-weight: 500;
-  font-size: 18px;
-  color: var(--primary-text-color);
-  line-height: 1.2rem;
-}
-
-h3 span {
-  font-size: 14px;
-  color: var(--secondary-text-color);
-  font-weight: 400;
 }
 
 .dropdown-menu ul li {
