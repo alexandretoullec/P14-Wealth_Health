@@ -1,7 +1,7 @@
-import { data } from "../data/data.js";
+import { mockedEmployees } from "../data/data.js";
 
 export const initialState = {
-  employees: data,
+  employees: mockedEmployees,
 };
 
 export const AppReducer = (state, action) => {

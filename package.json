@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
     "@reduxjs/toolkit": "^2.0.1",
     "@svgr/core": "^8.1.0",
+    "@table-library/react-table-library": "^4.1.7",
     "bootstrap": "^5.3.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
