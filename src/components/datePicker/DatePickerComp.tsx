@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const DatePickerComp = ({ labelName, type }) => {
   const [selecteDate, setSelecteDate] = useState(null);
   return (
-    <div className="inputCard">
+    <div className="inputCard" style={{ display: "none" /* other styles */ }}>
       <label typeof={type} className="label" htmlFor="">
         {labelName}
       </label>

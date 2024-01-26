@@ -23,11 +23,13 @@ const CurrentEmployee = () => {
   const { state } = useAppContext(); // Get the global state from the context
   const employees = state.employees; // Get the employees array from the global state
 
+  // State for the search input
   const [search, setSearch] = React.useState("");
   const handleSearch = (e: any) => {
     setSearch(e.target.value);
   };
 
+  // Transform employees data for the table
   const nodes = employees.map((employee: TableProps) => {
     return {
       firstName: employee.firstName,
@@ -42,6 +44,7 @@ const CurrentEmployee = () => {
     };
   });
 
+  // Filtered data based on the search input
   const data = {
     nodes: nodes.filter(
       (item: {
@@ -177,6 +180,7 @@ const CurrentEmployee = () => {
   return (
     <div className={styles.tableWrapper}>
       <div className={styles.tableWrapper__head}>
+        {/* Show entries dropdown */}
         <span>
           Show{" "}
           <select
@@ -193,7 +197,7 @@ const CurrentEmployee = () => {
           </select>{" "}
           entries
         </span>
-
+        {/* Search input */}
         <label htmlFor="search" className={styles.tableWrapper__label}>
           Search:&nbsp;
           <input
@@ -205,6 +209,7 @@ const CurrentEmployee = () => {
         </label>
       </div>
 
+      {/* Table component */}
       <Table data={data} theme={theme} sort={sort} pagination={pagination}>
         {(tableList: any[]) => (
           <>
@@ -223,7 +228,7 @@ const CurrentEmployee = () => {
                 <HeaderCellSort sortKey="ZIPCODE">Zip Code</HeaderCellSort>
               </HeaderRow>
             </Header>
-
+            {/* Table Body */}
             <Body>
               {tableList.map((item, index) => (
                 <Row key={item.lastName + index} item={item}>
@@ -242,7 +247,7 @@ const CurrentEmployee = () => {
           </>
         )}
       </Table>
-
+      {/* Pagination and entries information */}
       <div
         style={{
           fontSize: "14px",
@@ -256,7 +261,7 @@ const CurrentEmployee = () => {
           Showing {entriesRange.start} to {entriesRange.end} of{" "}
           {data.nodes.length} entries.
         </span>
-
+        {/* Pagination controls */}
         <span>
           <button
             type="button"
