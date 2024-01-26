@@ -38,8 +38,6 @@ const customStyles = {
 };
 const Home = () => {
   const { isOpen, openModal, closeModal, handleEscClose } = useModal();
-  // State for controlling the visibility of the modal
-  // const [openModal, setOpenModal] = useState(false);
 
   // Calculating the maximum date for the date of birth field
   const maxDate = new Date();
@@ -367,14 +365,14 @@ const Home = () => {
         >
           Save
         </button> */}
-        <Modal
-          isOpen={isOpen}
-          closeModal={closeModal}
-          textContent="Employee successfully created!"
-          modalClass={styles.modal__custom}
-          handleEscClose={handleEscClose}
-        />
       </form>
+      <Modal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        textContent="Employee successfully created!"
+        modalClass={styles.modal__custom}
+        handleEscClose={handleEscClose}
+      />
     </div>
   );
 };
