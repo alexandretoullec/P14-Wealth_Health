@@ -8,12 +8,17 @@
   scroll-behavior: smooth;
 }
 
+body {
+  height: 100vh;
+}
 .main {
   display: flex;
   flex-direction: column;
   font-family: $ff-primary;
+  background-color: aliceblue;
 }
 
 .contentContainer {
   width: 100%;
+  height: 100vh;
 }
