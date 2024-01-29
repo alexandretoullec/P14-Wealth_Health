@@ -1,8 +1,8 @@
 import "./styles/general.scss";
-import { useState } from "react";
+
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./layout/header/Header";
-import Footer from "./layout/footer/Footer";
+// import Footer from "./layout/footer/Footer";
 import Home from "./pages/home/Home";
 import CurrentEmployee from "./pages/currentEmployee/CurrentEmployee";
 import Error from "./pages/error/Error";

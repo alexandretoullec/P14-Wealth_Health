@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import "./home.scss";
-import DatePickerComp from "../../components/datePicker/DatePickerComp";
-// import Modal from "../../components/modal/Modal";
-import moment from "moment";
-// import SimpleContainer from "../../components/simpleInput/simpleContainer";
-// import DropdownMenu from "../../components/dropDownMenu/DropdownMenu";
-// import { dataDepartment } from "../../data/data.js";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
-import DatePicker from "react-datepicker";
-import Select from "react-select";
-import styles from "./Form.module.scss";
-import { useAppContext } from "../../contexts/AppContext.js";
-import { states } from "../../data/statesList";
-import { department } from "../../data/department";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-// import { Modal, useModal } from "alexandretoullec-react-ts-modal";
+//styles
+import styles from "./Form.module.scss";
+
+// Libraries
+import DatePicker from "react-datepicker";
+import DatePickerComp from "../../components/datePicker/DatePickerComp.tsx";
+import Select from "react-select";
+import moment from "moment";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
+
+//Modal own component
 import { Modal, useModal } from "alexandretoullec-react-ts-modal";
 import "alexandretoullec-react-ts-modal/dist/index.css";
+
+//Types
+import { FormInputs } from "../../types/FormInput.types.js";
+
+// Datas
+import { states } from "../../data/statesList.tsx";
+import { department } from "../../data/department.tsx";
+
+// context
+import { useAppContext } from "../../contexts/AppContext.js";
 
 const customStyles = {
   control: (provided: any) => ({
@@ -59,17 +65,16 @@ const Home = () => {
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     console.log(data);
     dispatch({ type: "ADD_EMPLOYEE", payload: data });
-    // setOpenModal(!openModal);
     openModal();
   };
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <h1>Create employee</h1>
       {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className="formSide">
-          <div className="leftSide">
+        <div className={styles.formSide}>
+          <div className={styles.leftSide}>
             <div className={styles.form__field}>
               {/* Label for the first name */}
               <label htmlFor="firstName">First Name </label>
@@ -117,7 +122,7 @@ const Home = () => {
               {/* Label for Date of Birth */}
               <label htmlFor="birthdate">Date of Birth</label>
               {/* React Hook Form Controller for Date of Birth */}
-              <DatePickerComp labelName="" type="number" />
+              <DatePickerComp labelName="birthDate" />
               <Controller
                 control={control}
                 name="birthDate"
@@ -235,12 +240,6 @@ const Home = () => {
                 </span>
               )}
             </div>
-
-            {/* <SimpleContainer labelName="First Name" type="text" /> */}
-            {/* <SimpleContainer labelName="Last Name" type="text" /> */}
-
-            {/* <DatePickerComp labelName="Start Date" type="date" /> */}
-            {/* <DropdownMenu data={dataDepartment} /> */}
           </div>
           <div className="rightSide">
             <fieldset className={styles.fieldset}>
@@ -348,23 +347,9 @@ const Home = () => {
                 )}
               </div>
             </fieldset>
-            {/* <h2>ADRESS</h2>
-            <div className="rightContainer">
-              <SimpleContainer labelName="Street" type="text" />
-              <SimpleContainer labelName="City" type="text" />
-              <DropdownMenu data={states} />
-              <SimpleContainer labelName="Zip Code" type="number" />
-            </div> */}
           </div>
         </div>
         <input type="submit" value="Save" className={styles.btn} />
-        {/* <button
-          onClick={() => setOpenModal(!openModal)}
-          className="submitButton"
-          type="submit"
-        >
-          Save
-        </button> */}
       </form>
       <Modal
         isOpen={isOpen}
