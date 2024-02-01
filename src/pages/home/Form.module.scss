@@ -6,18 +6,42 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  @media (max-width: $layout-breakpoint-small) {
+    width: 100%;
+    padding: 0rem;
+    margin: 0rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
 }
 
 .formSide {
   display: flex;
   width: 100%;
   color: #386841;
+  @media (max-width: $layout-breakpoint-small) {
+    width: 100%;
+    padding: 0rem;
+    margin: 0rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
 }
 
 .leftSide {
   width: 50%;
   padding: 2rem;
   margin: 2rem 2rem 1rem 2rem;
+  @media (max-width: $layout-breakpoint-small) {
+    width: 20rem;
+    padding: 0rem;
+    // margin: 0rem;
+    display: flex;
+    flex-direction: column;
+    // width: auto;
+  }
 }
 
 .form {
@@ -31,6 +55,16 @@
   width: 50%;
   max-width: 700px;
   border-top-left-radius: 0;
+  @media (max-width: $layout-breakpoint-small) {
+    width: 100%;
+    padding: 0rem;
+    margin: 0rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
   & label {
     margin-top: 0.3rem;
     margin-bottom: 0.5rem;
@@ -45,6 +79,14 @@
     text-indent: 5px;
     height: 2rem;
     width: fit-content;
+    @media (max-width: $layout-breakpoint-small) {
+      width: 80%;
+      padding: 0rem;
+      margin: 0rem;
+      display: flex;
+      flex-direction: column;
+      width: auto;
+    }
     &:focus {
       outline: none;
       box-shadow: 0 0 10px lighten(#2473cd, 30%);

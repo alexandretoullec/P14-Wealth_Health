@@ -43,6 +43,7 @@ const customStyles = {
   }),
 };
 const Home = () => {
+  // own modal component
   const { isOpen, openModal, closeModal, handleEscClose } = useModal();
 
   // Calculating the maximum date for the date of birth field
