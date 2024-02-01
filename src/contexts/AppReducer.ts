@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
 import { mockedEmployees } from "../data/data.js";
 
 // Initial state for the application
@@ -12,6 +14,7 @@ export const AppReducer = (state: any, action: any) => {
     // Case for adding a new employee
     case "ADD_EMPLOYEE":
       // Add the new employee to the list of employees
+      // eslint-disable-next-line prefer-const
       let newEmployee = [...state.employees, action.payload];
       // Return the new state by copying the old state and updating the employees list
       return {

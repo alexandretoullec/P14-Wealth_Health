@@ -10,6 +10,7 @@ import {
 import { AppReducer, initialState } from "./AppReducer";
 
 // Create a new context for the application state and dispatch function
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppContext = createContext({} as any);
 
 // Create a wrapper component that will provide the context to its children
@@ -17,7 +18,7 @@ export function AppWrapper({ children }: { children: ReactNode }) {
   // Use the useReducer hook to manage state using the AppReducer and initial state
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // Memoize the context value to update only when the state or dispatch change
+  // Memorize the context value to update only when the state or dispatch change
   const contextValue = useMemo(() => {
     return { state, dispatch };
   }, [state, dispatch]);
@@ -63,6 +64,7 @@ export function AppWrapper({ children }: { children: ReactNode }) {
  * const { state, dispatch } = useAppContext()
  * ```
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAppContext() {
   // Use the useContext hook to access the app context in functional components
   return useContext(AppContext);
