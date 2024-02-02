@@ -32,6 +32,7 @@ import { TableProps } from "../../types/Table.types";
 const CurrentEmployee = () => {
   const { state } = useAppContext(); // Get the global state from the context
   const employees = state.employees; // Get the employees array from the global state
+  console.log(employees);
 
   // State for the search input
   const [search, setSearch] = React.useState("");
@@ -120,7 +121,7 @@ const CurrentEmployee = () => {
       sortIcon: {
         size: "10px",
       },
-
+      // Personalise sort functions for each columns
       sortFns: {
         FIRSTNAME: (array) =>
           array.sort((a, b) => a.firstName.localeCompare(b.firstName)),

@@ -6,56 +6,83 @@ import {
   useMemo,
   useEffect,
 } from "react";
-/* reducer */
+import { openDB, DBSchema } from "idb";
 import { AppReducer, initialState } from "./AppReducer";
+
+// Define the database schema
+interface MyAppDB extends DBSchema {
+  employees: {
+    key: string;
+    value: any;
+  };
+}
 
 // Create a new context for the application state and dispatch function
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppContext = createContext({} as any);
 
+const DB_NAME = "my-app-db";
+const DB_VERSION = 1;
+
 // Create a wrapper component that will provide the context to its children
 export function AppWrapper({ children }: { children: ReactNode }) {
-  // Use the useReducer hook to manage state using the AppReducer and initial state
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  // Memorize the context value to update only when the state or dispatch change
   const contextValue = useMemo(() => {
     return { state, dispatch };
   }, [state, dispatch]);
 
-  // Load stored employees from local storage and set the state with them if they exist
   useEffect(() => {
-    // Check if the code is running on the client-side (in the browser)
-    if (typeof window !== "undefined") {
-      const storedEmployees = localStorage.getItem("employees");
-      if (storedEmployees) {
-        try {
-          // Parse the stored employees and dispatch an action to set them in the state
-          const employees = JSON.parse(storedEmployees);
+    async function initDB() {
+      try {
+        const db = await openDB<MyAppDB>(DB_NAME, DB_VERSION, {
+          upgrade(db) {
+            // Create the 'employees' store if it doesn't exist
+            if (!db.objectStoreNames.contains("employees")) {
+              db.createObjectStore("employees", { keyPath: "id" });
+            }
+          },
+        });
+
+        // Load stored employees from IndexedDB and set the state with them
+        const storedEmployees = await db.get("employees", "employees");
+        if (storedEmployees) {
           dispatch({
             type: "SET_EMPLOYEES",
-            payload: employees,
+            payload: storedEmployees.data,
           });
-        } catch (error) {
-          console.log("Error parsing stored employees:", error);
+          console.log("Loaded employees from IndexedDB:", storedEmployees.data);
+        } else {
+          console.log("No stored employees found in IndexedDB.");
         }
+      } catch (error) {
+        console.error("Error initializing IndexedDB:", error);
       }
     }
+
+    initDB();
   }, []);
 
-  // Store the employees in local storage when the state changes
   useEffect(() => {
-    if (state !== initialState) {
-      localStorage.setItem("employees", JSON.stringify(state.employees));
-    }
-  }, [state, state.employees]);
+    async function updateDB() {
+      try {
+        const db = await openDB<MyAppDB>(DB_NAME, DB_VERSION);
 
-  // Provide the context value to the wrapped components
+        // Update the 'employees' store with the latest state
+        await db.put("employees", { id: "employees", data: state.employees });
+        console.log("IndexedDB updated with new employees:", state.employees);
+      } catch (error) {
+        console.error("Error updating IndexedDB:", error);
+      }
+    }
+
+    updateDB();
+  }, [state.employees]);
+
   return (
     <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 }
-
 /**
  * Custom hook to use the app context
  * @returns the app context
