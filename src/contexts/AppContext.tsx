@@ -17,7 +17,7 @@ interface MyAppDB extends DBSchema {
   };
 }
 
-// Create a new context for the application state and dispatch function
+// Create a new context for the application state and dispatch fnction
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const AppContext = createContext({} as any);
 
